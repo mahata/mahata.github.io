@@ -1,0 +1,13 @@
+title: Why Nerds are Unpopular
+author: mahata
+email: mahata777@gmail.com
+
+description: "Hello, my description"
+baseurl: ""
+url: "https://mahata.github.io"
+twitter_username: mahata
+github_username:  mahata
+
+# Build settings
+markdown: kramdown
+permalink: pretty
