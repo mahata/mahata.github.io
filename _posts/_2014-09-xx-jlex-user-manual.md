@@ -158,6 +158,20 @@ Macro definitions are given in the JLex directives section of the specification.
 
 (Work In Progress)
 
+#### 文字のカウント
+
+文字数カウント機能はデフォルトではオフですが、`%char` ディレクティブを使ってアクティベートすることもできます。
+
+```
+%char
+```
+
+文字数カウントはマッチしたテキストの最初の一文字目を 0 とします。最終的にマッチしたテキスト長が `yychar` という整数型の変数に代入されます。
+
+#### Dummy
+
+(Work In Progress)
+
 ## Credits and Copyrights
 
 ### Credits
