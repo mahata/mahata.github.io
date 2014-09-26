@@ -160,13 +160,104 @@ Macro definitions are given in the JLex directives section of the specification.
 
 #### 文字のカウント
 
-文字数カウント機能はデフォルトではオフですが、`%char` ディレクティブを使ってアクティベートすることもできます。
+文字数カウント機能はデフォルトではオフですが、`%char` ディレクティブを使ってオンにできます。
 
 ```
 %char
 ```
 
-文字数カウントはマッチしたテキストの最初の一文字目を 0 とします。最終的にマッチしたテキスト長が `yychar` という整数型の変数に代入されます。
+文字数カウントは 0 からはじまり、`yychar` という整数型の変数に格納されます。
+
+#### 行のカウント
+
+行カウント機能はデフォルトではオフですが、 `%line` ディレクティブを使ってオンにできます。
+
+```
+%line
+```
+
+行カウントは 0 からはじまり、`yyline` という整数型の変数に格納されます。
+
+#### Java CUP 互換性
+
+Java CUP はジョージア工科大学の Scott Hudson に作られた Java の構文解析器生成系です。現在は Frank Flannery, Dan Wang, C. Scott Ananian にメンテナンスされています。詳しくはこちらのサイトを参照してください - http://www.cs.princeton.edu/~appel/modern/java/CUP/
+
+Java CUP 互換機能はデフォルトではオフですが、次の JLex ディレクティブでオンにできます。
+
+```
+%cup
+```
+
+このディレクティブを使うと字句解析器は `java_cup.runtime.Scanner` インタフェースを実装します。これは次の3つのディレクティブと等価です:
+
+```
+%implements java_cup.runtime.Scanner
+%function next_token
+%type java_cup.runtime.Symbol
+```
+
+この3つのディレクティブについては次のセクションを参照してください。また、CUP のマニュアルにも CUP と JLex を同時に使う方法についての記述があります。
+
+#### 字句解析器のコンポーネント名
+
+次のディレクティブで字句解析器クラスの名前、トークナイズ関数、トークナイズ関数の返り値の型を変えられます。字句解析クラスの名前を `Yylex` から変更するには `%class` ディレクティブを使います。
+
+```
+%class <name>
+```
+
+トークナイズ関数の名前を `yylex` から変更するには `%function` ディレクティブを使います。
+
+```
+%function <name>
+```
+
+トークナイズ関数の返り値の型を `Yytoken` から変更するには `%type` ディレクティブを使います。
+
+```
+%type <name>
+```
+
+もしこれらのディレクティブによる変更がなければ、トークナイズ関数は `Yylex.yylex()` となり、この関数は `Ytoken` 型の値を返します。
+
+スコープ内での名前の衝突を避けるため、 `yy` ではじまる名前は字句解析クラスの関数名や変数名に予約されます。
+
+#### デフォルトのトークン型 (ToDo - Default Token Type)
+
+To make the 32-bit primitive integer type int, the return type for the tokenizing function (and therefore the token type), use the %integer directive.
+
+```
+%integer
+```
+
+Under default settings, Yytoken is the return type of the tokenizing function Yylex.yylex(), as in the following code fragment.
+
+```
+class Yylex { ... 
+public Yytoken yylex () {
+... }
+```
+
+The %integer directive replaces the previous code with a revised declaration, in which the token type has been changed to int.
+
+```
+class Yylex { ... 
+public int yylex () {
+... }
+```
+
+This declaration allows lexical actions to return integer codes, as in the following code fragment from a hypothetical lexical action.
+
+```
+{ ...
+return 7; 
+... }
+```
+
+The integer return type forces changes the behavior at end of file. Under default settings, objects - subclasses of the java.lang.Object class - are returned by Yylex.yylex(). During execution of the generated lexer Yylex, a special object value must be reserved for end-of-file. Therefore, when the end-of-file is reached for the processed input file (and from then onward), Yylex.yylex() returns null.
+
+When int is the return type of Yylex.yylex(), null can no longer be returned. Instead, Yylex.yylex() returns the value -1, corresponding to constant integer
+Yylex.YYEOF. The %integer directive implies %yyeof; see below.
 
 #### Dummy
 
