@@ -104,7 +104,43 @@ throws <exception[1]>[, <exception[2]>, ...]
 
 `%init{ ... %init}` に書かれた Java コードが宣言されていない例外を投げる場合、字句解析器のコンパイルに失敗する可能性があります。
 
-(ToDo - translation incomplete)
+#### 字句解析クラスの End-of-File コード
+
+`%eof{ ... %eof}` ディレクティブに書いたコードは、字句解析クラスが end-of-file にたどり着いたときの処理に使われます。
+
+```
+%eof{ 
+<code>
+%eof}
+```
+
+`%eof{` と `%eof}` ディレクティブは行頭に書きます。`<code>` に書かれた Java コードは字句解析器が入力ファイルの end-of-file に到達するとすぐ、多くとも一度だけ実行されます。
+
+`%eof{ ... %eof}` に置かれたコードは例外を投げる可能性があります。この例外を宣言するには `%eofthrow{ ... $eofthrow}` ディレクティブを使います。
+
+```
+%eofthrow{ 
+<exception[1]>[, <exception[2]>, ...]
+%eofthrow}
+```
+
+ここに書かれた Java コードは字句解析関数にコピーされ、end-of-file に到達したときの後始末のための処理をします。
+
+```
+private void yy_do_eof () 
+throws <exception[1]>[, <exception[2]>, ...]
+{ 
+... <code> ... 
+}
+```
+
+The Java code in <code> that makes up the body of this function will, in part, come from the code given in the %eof{ ... %eof} directive. If this code throws an exception that is not declared using the %eofthrow{ ... %eofthrow} directive, the resulting lexer may not compile successfully.
+
+`<code>` に置かれる Java コードの一部は `%eof{ ... %eof}` に書かれたコードになります。このコードが `%eofthrow{ ... %eofthrow}` で宣言していない例外を投げるとき、字句解析器のコンパイルに失敗する可能性があります。
+
+#### Dummy
+
+(Work In Progress)
 
 ## Credits and Copyrights
 
