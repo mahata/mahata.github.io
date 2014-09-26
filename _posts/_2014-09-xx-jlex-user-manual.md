@@ -134,9 +134,25 @@ throws <exception[1]>[, <exception[2]>, ...]
 }
 ```
 
-The Java code in <code> that makes up the body of this function will, in part, come from the code given in the %eof{ ... %eof} directive. If this code throws an exception that is not declared using the %eofthrow{ ... %eofthrow} directive, the resulting lexer may not compile successfully.
-
 `<code>` に置かれる Java コードの一部は `%eof{ ... %eof}` に書かれたコードになります。このコードが `%eofthrow{ ... %eofthrow}` で宣言していない例外を投げるとき、字句解析器のコンパイルに失敗する可能性があります。
+
+#### マクロ定義
+
+Macro definitions are given in the JLex directives section of the specification. Each macro definition is contained on a single line and consists of a macro name followed by an equal sign (=), then by its associated definition. The format can therefore be summarized as follows.
+
+マクロ定義は JLex ディレクティブのセクションに埋め込みます。それぞれのマクロ定義は一行で書かれ、マクロ名に続いてイコール(=)、そして定義の順番になります。フォーマットの例は次の通りです。
+
+```
+<name> = <definition>
+```
+
+空白文字やタブがイコールの前後に来ても問題ありません。それぞれのマクロ定義は一行で書きます。
+
+マクロ名は英アルファベットか数字、もしくはアンダースコアの組み合わせです。英アルファベットかアンダースコアではじまる名前である必要があります。
+
+マクロ定義は正規表現です。詳しくは後の章を参照してください。
+
+マクロ定義の正規表現の中に、マクロが表れることもあります。これは関数でも非終端記号でもないことに注意しましょう。相互再帰的なマクロは許されません。マクロ定義が循環すると予期せぬ結果を引き起こす可能性があります。
 
 #### Dummy
 
