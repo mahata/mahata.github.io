@@ -238,15 +238,15 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 
 スコープ内での名前の衝突を避けるため、 `yy` ではじまる名前は字句解析クラスの関数名や変数名に予約されます。
 
-#### デフォルトのトークン型 (ToDo - Default Token Type)
+#### デフォルトのトークン型
 
-To make the 32-bit primitive integer type int, the return type for the tokenizing function (and therefore the token type), use the %integer directive.
+32ビットのプリミティブな整数型をトークナイズ関数の返り値にする (すなわち、トークンクラスを整数型にする) ためには 、`%integer` ディレクティブを使います。
 
 ```
 %integer
 ```
 
-Under default settings, Yytoken is the return type of the tokenizing function Yylex.yylex(), as in the following code fragment.
+次のコード断片が示す通り、デフォルトでは `Ytoken` がトークナイズ関数 `Yylex.yylex()` の戻り値の型です。
 
 ```
 class Yylex { ... 
@@ -254,7 +254,7 @@ public Yytoken yylex () {
 ... }
 ```
 
-The %integer directive replaces the previous code with a revised declaration, in which the token type has been changed to int.
+`%integer` ディレクティブで関数の宣言部を変えられます。トークンタイプが `int` になります。
 
 ```
 class Yylex { ... 
@@ -262,7 +262,7 @@ public int yylex () {
 ... }
 ```
 
-This declaration allows lexical actions to return integer codes, as in the following code fragment from a hypothetical lexical action.
+このディレクティブで字句解析アクションが整数値を返すようになります。次のコード断片は仮想的な字句解析アクションです。
 
 ```
 { ...
@@ -270,10 +270,9 @@ return 7;
 ... }
 ```
 
-The integer return type forces changes the behavior at end of file. Under default settings, objects - subclasses of the java.lang.Object class - are returned by Yylex.yylex(). During execution of the generated lexer Yylex, a special object value must be reserved for end-of-file. Therefore, when the end-of-file is reached for the processed input file (and from then onward), Yylex.yylex() returns null.
+整数の戻り値は end-of-file に対する挙動の変更をともないます。デフォルトでは、オブジェクト (`java.lang.Object` クラスのサブクラス) が `Yylex.yylex()` で返されます。`Yylex` が字句解析をするときは特別なオブジェクトが end-of-file のために予約されなければなりません。入力ファイルが end-of-file に到達すると `Yylex.yylex()` は `null` を返します。
 
-When int is the return type of Yylex.yylex(), null can no longer be returned. Instead, Yylex.yylex() returns the value -1, corresponding to constant integer
-Yylex.YYEOF. The %integer directive implies %yyeof; see below.
+`Yylex.yylex()` の返り値が整数型なら `null` が返ることはありません。代わりに `Yylex.yylex()` は `-1` を返します。この値は`Yylex.YYEOF` と等価です。`%integer` ディレクティブは `%yyeof` を含みます。詳しくは次を参照してください。
 
 #### Dummy
 
