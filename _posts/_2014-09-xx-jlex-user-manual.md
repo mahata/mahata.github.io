@@ -274,6 +274,46 @@ return 7;
 
 `Yylex.yylex()` の返り値が整数型なら `null` が返ることはありません。代わりに `Yylex.yylex()` は `-1` を返します。この値は`Yylex.YYEOF` と等価です。`%integer` ディレクティブは `%yyeof` を含みます。詳しくは次を参照してください。
 
+#### デフォルトのトークン型 II: ラップクラスの整数
+
+`java.lang.Integer` をトークナイズ関数の返り値にする (すなわち、トークンクラスを `java.lang.Integer` にする) ためには、`%intwrap` ディレクティブを使います。
+
+```
+%intwrap
+```
+
+次のコード断片の通り、デフォルトでは `Yytoken` がトークナイズ関数 `Yylex.yylex()` の返り値の型です。
+
+```
+class Yylex { ... 
+public Yytoken yylex () {
+... }
+```
+
+`%intwrap` ディレクティブでこの関数の宣言を変えられます。次のように `java.lang.Integer` が返り値の型になります。
+
+```
+class Yylex { ... 
+public java.lang.Integer yylex () {
+... }
+```
+
+この宣言により、字句解析アクションがラップクラスの整数型を返すようになります。次のコード断片は仮想的な字句解析アクションです。
+
+```
+{ ...
+return new java.lang.Integer(0); 
+... }
+```
+
+次のようにして `%intwrap` ディレクティブと等価の内容を `%type` ディレクティブを使っても実現できることに注意しましょう。
+
+```
+%type java.lang.Integer
+```
+
+これは `Yylex.yylex()` の返り値の型を明示的に `java.lang.Integer` に変更します。
+
 #### Dummy
 
 (Work In Progress)
