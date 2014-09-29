@@ -331,6 +331,16 @@ public final int YYEOF = -1;
 
 `%integer` ディレクティブは `%yyeof` を含みます。
 
+#### Newlines and Operating System Compatibility
+
+UNIX では改行文字は `\n` で表現します。DOS では、改行文字の前に復帰文字をつけて `\r\n` という二文字で改行を表現します。`%notunix` ディレクティブを使と復帰文字か改行文字が改行として扱われます。
+
+```
+%notunix
+```
+
+正しく改行シーケンスを認識することは Java のプラットフォーム独立性のために重要です。
+
 #### Dummy
 
 (Work In Progress)
