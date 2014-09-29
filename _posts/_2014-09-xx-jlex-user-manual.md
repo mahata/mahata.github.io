@@ -314,6 +314,23 @@ return new java.lang.Integer(0);
 
 これは `Yylex.yylex()` の返り値の型を明示的に `java.lang.Integer` に変更します。
 
+#### End-ofFile におけるYYEOF
+
+
+`%yyeof` ディレクティブを使うことで `Yylex.YYEOF` という整数型の定数を宣言できます。`%integer` ディレクティブが使われている場合、 `Yylex.YYEOF` は end-of-file が現れたときに返されます。
+
+```
+%yyeof
+```
+
+このディレクティブを使うと `Yylex.YYEOF` は次のように宣言されます。
+
+```
+public final int YYEOF = -1;
+```
+
+`%integer` ディレクティブは `%yyeof` を含みます。
+
 #### Dummy
 
 (Work In Progress)
