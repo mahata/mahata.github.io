@@ -394,7 +394,7 @@ throws <exception[1]>[, <exception[2]>, ...]
 
 正規表現のアクション部に書かれたコードが `{%yylexthrow{ ... %yylexthrow}` で宣言されていない例外を投げる場合、生成された字句解析のコンパイルに失敗する可能性があります。
 
-#### End-of-File に対する返り値 (ToDo - Specifying the Return Value on End-of-File)
+#### End-of-File に対する返り値
 
 `%eofval{ ... %eofval}` ディレクティブで end-of-file に対する返り値を指定できます。このディレクティブの中に Java コードを書くと字句解析器のトークナイズ関数 `Yylex.yylex()` にコピーされ、字句解析器が end-of-file を処理するときに実行されます。このコードの返り値の型は `Yylex.yylex()` の返り値の型と同じである必要があります。
 
@@ -423,6 +423,22 @@ return (new token(sym.EOF));
 ```
 
 これで end-of-file に対する `Yylex.yylex()` の返り値は `(new token(sym.EOF))` になります。
+
+#### 実装するインタフェースの指定
+
+JLex allows the user to specify an interface which the Yylex class will implement. By adding the following declaration to the input file:
+
+JLex では次の宣言を入力ファイルに入れることで、 `Yylex` クラスが実装するインタフェースを指定できます。
+
+```
+%implements <classname>
+```
+
+生成されるパーサークラス定義は次のようになります。
+
+```
+class Yylex implements classname { ...
+```
 
 #### Dummy
 
