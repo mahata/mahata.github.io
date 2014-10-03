@@ -394,6 +394,36 @@ throws <exception[1]>[, <exception[2]>, ...]
 
 正規表現のアクション部に書かれたコードが `{%yylexthrow{ ... %yylexthrow}` で宣言されていない例外を投げる場合、生成された字句解析のコンパイルに失敗する可能性があります。
 
+#### End-of-File に対する返り値 (ToDo - Specifying the Return Value on End-of-File)
+
+`%eofval{ ... %eofval}` ディレクティブで end-of-file に対する返り値を指定できます。このディレクティブの中に Java コードを書くと字句解析器のトークナイズ関数 `Yylex.yylex()` にコピーされ、字句解析器が end-of-file を処理するときに実行されます。このコードの返り値の型は `Yylex.yylex()` の返り値の型と同じである必要があります。
+
+```
+%eofval{ 
+<code>
+%eofval}
+```
+
+`<code>` の中の Java コードは、字句解析器クラスが入力ファイルを解析し end-of-file に辿り着いたときに `Yylex.yylex()` が返す値を決定します。これは `Yylex.yylex()` が end-of-file に辿り着くたびに実行されるので、`<code>` は複数回実行される可能性があります。また、`%eofval{` と `%eofval}` は行頭に書くべきです。
+
+使用例は次の通りです。end-of-file に対する返り値はデフォルトの `null` ではなく `(new token(sym.EOF))` と仮定します。その場合は次のような宣言を行います。
+
+```
+%eofval{ 
+return (new token(sym.EOF)); 
+%eofval}
+```
+
+このコードは `Yylex.yylex()` の適切な場所にコピーされます。
+
+```
+public Yytoken yylex () { ... 
+return (new token(sym.EOF)); 
+... }
+```
+
+これで end-of-file に対する `Yylex.yylex()` の返り値は `(new token(sym.EOF))` になります。
+
 #### Dummy
 
 (Work In Progress)
