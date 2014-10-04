@@ -440,6 +440,17 @@ JLex では次の宣言を入力ファイルに入れることで、 `Yylex` ク
 class Yylex implements classname { ...
 ```
 
+#### Making the Generated Class Public
+
+`%public` ディレクティブで JLex が生成する字句解析クラスを public にできます。
+
+```
+%public
+```
+
+デフォルトでは生成されるクラスにはアクセスが与えられないので、現在のパッケージからのみ参照可能になります。
+
+
 #### Dummy
 
 (Work In Progress)
