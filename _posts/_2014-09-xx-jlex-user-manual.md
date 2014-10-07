@@ -491,9 +491,9 @@ JLex 仕様の正規表現ルール部は全ての可能な全ての入力にマ
 
 ### 正規表現
 
-Regular expressions should not contain any white space, as white space is interpreted as the end of the current regular expression. There is one exception; if (non-newline) white space characters appear from within double quotes, these characters are taken to represent themselves. For instance, `` '' is interpreted as a blank space.
+正規表現は空白を含むべきではありません。空白は正規表現の終端だと解釈されるからです。ただし、例外が一つあります。改行ではない空白文字がダブルクオーテーションの中で現れると、それは空白として解釈されます。例えば `" "` は空白文字として扱われます。
 
-The alphabet for JLex is the Ascii character set, meaning character codes between 0 and 127 inclusive.
+JLex のアルファベットは Ascii の文字セットです。すなわち、文字コード値は 0 以上かつ 127 以下です。
 
 The following characters are metacharacters, with special meanings in JLex regular expressions.
 
