@@ -475,7 +475,7 @@ JLex 仕様の正規表現ルール部は全ての可能な全ての入力にマ
 
 ドット (.) は改行を除く全ての入力にマッチします。
 
-#### 状態 (ToDo - Lexical States)
+### 状態
 
 オプションの状態リストは正規表現より先に来ます。次のような形式です。
 
@@ -489,7 +489,63 @@ JLex 仕様の正規表現ルール部は全ての可能な全ての入力にマ
 
 状態リストが与えられないとき、正規表現は状態を問わずマッチします。
 
-#### Dummy
+### 正規表現
+
+Regular expressions should not contain any white space, as white space is interpreted as the end of the current regular expression. There is one exception; if (non-newline) white space characters appear from within double quotes, these characters are taken to represent themselves. For instance, `` '' is interpreted as a blank space.
+
+The alphabet for JLex is the Ascii character set, meaning character codes between 0 and 127 inclusive.
+
+The following characters are metacharacters, with special meanings in JLex regular expressions.
+
+```
+? * + | ( ) ^ $ . [ ] { } " \
+```
+
+Otherwise, individual characters stand for themselves.
+
+`ef` Consecutive regular expressions represents their concatenation.
+
+`e|f` The vertical bar (|) represents an option between the regular expressions that surround it, so matches either expression e or f.
+
+The following escape sequences are recognized and expanded:
+
+```
+\b	Backspace
+\n	newline
+\t	Tab
+\f	Formfeed
+\r	Carriage return
+\ddd	The character code corresponding to the number formed by three octal digits ddd
+\xdd	The character code corresponding to the number formed by two hexadecimal digits dd
+\udddd	The Unicode character code corresponding to the number formed by four hexidecimal digits dddd.
+\^C	Control character
+\c	A backslash followed by any other character c matches itself
+$ The dollar sign ($) denotes the end of a line. If the dollar sign ends a regular expression, the expression is matched only at the end of a line.
+
+. The dot (.) matches any character except the newline, so this expression is equivalent to [^\n].
+
+"..." Metacharacters lose their meaning within double quotes and represent themselves. The sequence \" (which represents the single character ") is the only exception.
+
+{name} Curly braces denote a macro expansion, with name the declared name of the associated macro.
+
+* The star (*) represents Kleene closure and matches zero or more repetitions of the preceding regular expression.
+
++ The plus (+) matches one or more repetitions of the preceding regular expression, so e+ is equivalent to ee*.
+
+? The question mark (?) matches zero or one repetitions of the preceding regular expression.
+
+(...) Parentheses are used for grouping within regular expressions.
+
+[...] Square backets denote a class of characters and match any one character enclosed in the backets. If the first character following the left bracket ([) is the up arrow (^), the set is negated and the expression matches any character except those enclosed in the backets. Different metacharacter rules hold inside the backets, with the following expressions having special meanings:
+{name}	Macro expansion
+a - b	Range of character codes from a to b to be included in character set
+"..."	All metacharacters within double quotes lose their special meanings. The sequence \" (which represents the single character ") is the only exception.
+\	Metacharacter following backslash(\) loses its special meaning
+```
+
+For example, [a-z] matches any lower-case letter, [^0-9] matches anything except a digit, and [0-9a-fA-F] matches any hexadecimal digit. Inside character class brackets, a metacharacter following a backslash loses its special meaning. Therefore, [\-\\] matches a dash or a backslash. Likewise ["A-Z"] matches one of the three characters A, dash, or Z. Leading and trailing dashes in a character class also lose their special meanings, so [+-] and [-+] do what you would expect them to (ie, match only '+' and '-').
+
+### Dummy
 
 (Work In Progress)
 
