@@ -495,17 +495,16 @@ JLex 仕様の正規表現ルール部は全ての可能な全ての入力にマ
 
 JLex のアルファベットは Ascii の文字セットです。すなわち、文字コード値は 0 以上かつ 127 以下です。
 
-The following characters are metacharacters, with special meanings in JLex regular expressions.
+次の文字は JLex 正規表現において特別な意味を持つメタ文字です。
 
 ```
 ? * + | ( ) ^ $ . [ ] { } " \
 ```
 
-Otherwise, individual characters stand for themselves.
+その他の文字はその文字自身を表します。
 
-`ef` Consecutive regular expressions represents their concatenation.
-
-`e|f` The vertical bar (|) represents an option between the regular expressions that surround it, so matches either expression e or f.
+* `ef` 複数の正規表現を続けて書くことは正規表現の結合を意味します。
+* `e|f` 縦棒は正規表現の選択肢を表現します。この例では `e` か `f` かどちらかのマッチを意味します。
 
 The following escape sequences are recognized and expanded:
 
