@@ -506,7 +506,7 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * `ef` 複数の正規表現を続けて書くことは正規表現の結合を意味します。
 * `e|f` 縦棒は正規表現の選択肢を表現します。この例では `e` か `f` かどちらかのマッチを意味します。
 
-The following escape sequences are recognized and expanded:
+次のエスケープシーケンスは特別な意味を持ちます。
 
 ```
 \b	Backspace
