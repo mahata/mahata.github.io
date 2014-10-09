@@ -508,16 +508,17 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 
 次のエスケープシーケンスは特別な意味を持ちます。
 
+* \b	バックスペース
+* \n	改行
+* \t	タブ
+* \f	フォームフィード
+* \r	キャリッジリターン
+* \ddd	各桁を d で表現したときの8進数の文字コード
+* \xdd	各桁を d で表現したときの16進数の文字コード
+* \udddd	各桁を d で表現した時の16進数のユニコード文字
+* \^C	コントロール文字
+
 ```
-\b	Backspace
-\n	newline
-\t	Tab
-\f	Formfeed
-\r	Carriage return
-\ddd	The character code corresponding to the number formed by three octal digits ddd
-\xdd	The character code corresponding to the number formed by two hexadecimal digits dd
-\udddd	The Unicode character code corresponding to the number formed by four hexidecimal digits dddd.
-\^C	Control character
 \c	A backslash followed by any other character c matches itself
 $ The dollar sign ($) denotes the end of a line. If the dollar sign ends a regular expression, the expression is matched only at the end of a line.
 
