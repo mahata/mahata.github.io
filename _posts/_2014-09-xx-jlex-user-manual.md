@@ -521,10 +521,9 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * $	ドル記号 ($) は行末を意味します。ドル記号で正規表現が終わる場合、その正規表現は行末でのみマッチします。
 * .	ドット記号 (.) は改行を除く全ての文字にマッチします。これは `[^\n]` と等価です。
 * "..." メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
+* 波括弧はマクロ展開を意味します。波括弧の中はマクロの名前です。
 
 ```
-{name} Curly braces denote a macro expansion, with name the declared name of the associated macro.
-
 * The star (*) represents Kleene closure and matches zero or more repetitions of the preceding regular expression.
 
 + The plus (+) matches one or more repetitions of the preceding regular expression, so e+ is equivalent to ee*.
