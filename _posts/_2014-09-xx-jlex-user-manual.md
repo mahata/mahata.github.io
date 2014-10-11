@@ -520,10 +520,9 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * \c	バックスラッシュと、その他の文字 c が続くもの
 * $	ドル記号 ($) は行末を意味します。ドル記号で正規表現が終わる場合、その正規表現は行末でのみマッチします。
 * .	ドット記号 (.) は改行を除く全ての文字にマッチします。これは `[^\n]` と等価です。
+* "..." メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
 
 ```
-"..." Metacharacters lose their meaning within double quotes and represent themselves. The sequence \" (which represents the single character ") is the only exception.
-
 {name} Curly braces denote a macro expansion, with name the declared name of the associated macro.
 
 * The star (*) represents Kleene closure and matches zero or more repetitions of the preceding regular expression.
