@@ -522,9 +522,9 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * .	ドット記号 (.) は改行を除く全ての文字にマッチします。これは `[^\n]` と等価です。
 * "..." メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
 * 波括弧はマクロ展開を意味します。波括弧の中はマクロの名前です。
+* アスタリスク (*) はクリーネ閉包を意味し、直前の正規表現の 0 回以上の繰り返しを意味します。
 
 ```
-* The star (*) represents Kleene closure and matches zero or more repetitions of the preceding regular expression.
 
 + The plus (+) matches one or more repetitions of the preceding regular expression, so e+ is equivalent to ee*.
 
