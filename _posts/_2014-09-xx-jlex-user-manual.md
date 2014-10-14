@@ -527,14 +527,11 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * クエスチョンマーク (?) は直前の正規表現の 0 回か 1 回かのマッチを意味します。
 * 括弧は正規表現のグルーピングのために使われます。
 
-
-```
-[...] Square backets denote a class of characters and match any one character enclosed in the backets. If the first character following the left bracket ([) is the up arrow (^), the set is negated and the expression matches any character except those enclosed in the backets. Different metacharacter rules hold inside the backets, with the following expressions having special meanings:
-{name}	Macro expansion
-a - b	Range of character codes from a to b to be included in character set
-"..."	All metacharacters within double quotes lose their special meanings. The sequence \" (which represents the single character ") is the only exception.
-\	Metacharacter following backslash(\) loses its special meaning
-```
+* 角括弧 [...] は文字クラスを表現し、角括弧内のいずれの文字ともマッチします。開き角括弧 ([) の最初の文字が上矢印 (^) の場合、角括弧に含まれない文字とマッチする、否定の文字クラスになります。角括弧の中ではいくつかのメタ文字の意味が次のように変わります。
+    * {name}	マクロ展開
+    * a - b	Range of character codes from a to b to be included in character set
+    * "..."	All metacharacters within double quotes lose their special meanings. The sequence \" (which represents the single character ") is the only exception.
+    * \	Metacharacter following backslash(\) loses its special meaning
 
 For example, [a-z] matches any lower-case letter, [^0-9] matches anything except a digit, and [0-9a-fA-F] matches any hexadecimal digit. Inside character class brackets, a metacharacter following a backslash loses its special meaning. Therefore, [\-\\] matches a dash or a backslash. Likewise ["A-Z"] matches one of the three characters A, dash, or Z. Leading and trailing dashes in a character class also lose their special meanings, so [+-] and [-+] do what you would expect them to (ie, match only '+' and '-').
 
