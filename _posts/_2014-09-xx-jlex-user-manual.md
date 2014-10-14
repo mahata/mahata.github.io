@@ -523,15 +523,12 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 * "..." メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
 * 波括弧はマクロ展開を意味します。波括弧の中はマクロの名前です。
 * アスタリスク (*) はクリーネ閉包を意味し、直前の正規表現の 0 回以上の繰り返しを意味します。
+* プラス (+) は直前の正規表現の 1 回以上の繰り返しを意味します。つまり `e+` は `ee*` と等価です。
+* クエスチョンマーク (?) は直前の正規表現の 0 回か 1 回かのマッチを意味します。
+* 括弧は正規表現のグルーピングのために使われます。
+
 
 ```
-
-+ The plus (+) matches one or more repetitions of the preceding regular expression, so e+ is equivalent to ee*.
-
-? The question mark (?) matches zero or one repetitions of the preceding regular expression.
-
-(...) Parentheses are used for grouping within regular expressions.
-
 [...] Square backets denote a class of characters and match any one character enclosed in the backets. If the first character following the left bracket ([) is the up arrow (^), the set is negated and the expression matches any character except those enclosed in the backets. Different metacharacter rules hold inside the backets, with the following expressions having special meanings:
 {name}	Macro expansion
 a - b	Range of character codes from a to b to be included in character set
