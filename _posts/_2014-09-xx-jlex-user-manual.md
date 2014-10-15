@@ -529,9 +529,9 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 
 * 角括弧 [...] は文字クラスを表現し、角括弧内のいずれの文字ともマッチします。開き角括弧 ([) の最初の文字が上矢印 (^) の場合、角括弧に含まれない文字とマッチする、否定の文字クラスになります。角括弧の中ではいくつかのメタ文字の意味が次のように変わります。
     * {name}	マクロ展開
-    * a - b	Range of character codes from a to b to be included in character set
-    * "..."	All metacharacters within double quotes lose their special meanings. The sequence \" (which represents the single character ") is the only exception.
-    * \	Metacharacter following backslash(\) loses its special meaning
+	* a - b	文字セットにおける `a` から `b` までの文字コードの範囲
+    * "..."	メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
+    * \	バックスラッシュに続けて書いたメタ文字は特殊な意味を持ちません。
 
 For example, [a-z] matches any lower-case letter, [^0-9] matches anything except a digit, and [0-9a-fA-F] matches any hexadecimal digit. Inside character class brackets, a metacharacter following a backslash loses its special meaning. Therefore, [\-\\] matches a dash or a backslash. Likewise ["A-Z"] matches one of the three characters A, dash, or Z. Leading and trailing dashes in a character class also lose their special meanings, so [+-] and [-+] do what you would expect them to (ie, match only '+' and '-').
 
