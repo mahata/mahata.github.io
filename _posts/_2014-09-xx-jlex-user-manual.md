@@ -533,7 +533,19 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
     * "..."	メタ文字はダブルクオーテーションの中では特殊な意味を持ちません。`\"` (これは `"` 一文字を表現します) だけが例外です。
     * \	バックスラッシュに続けて書いたメタ文字は特殊な意味を持ちません。
 
-For example, [a-z] matches any lower-case letter, [^0-9] matches anything except a digit, and [0-9a-fA-F] matches any hexadecimal digit. Inside character class brackets, a metacharacter following a backslash loses its special meaning. Therefore, [\-\\] matches a dash or a backslash. Likewise ["A-Z"] matches one of the three characters A, dash, or Z. Leading and trailing dashes in a character class also lose their special meanings, so [+-] and [-+] do what you would expect them to (ie, match only '+' and '-').
+例えば [a-z] は任意の小文字のアルファベットにマッチし、[^0-9] は数字以外にマッチします。また [0-9a-fA-F] は任意の16進数にマッチします。文字クラス角括弧の中では、バックスラッシュに続くメタ文字は特殊な意味を持ちません。したがって、[\-\\] はダッシュかバックスラッシュにマッチします。同様に ["A-Z"] は A かダッシュか Z のいずれかとマッチします。文字クラスの中で先端か末尾に来るダッシュも特殊な意味を失います。なので  [+-] や [-+] は予想通りに振る舞うでしょう (つまり、'+' と '-' にのみマッチします)。
+
+### Associated Actions
+
+The action associated with a lexical rule consists of Java code enclosed inside block-delimiting curly braces.
+
+```
+{ action }
+```
+
+The Java code action is copied, as given, into the state-driven lexical analyzer produced by JLex.
+
+All curly braces contained in action not part of strings or comments should be balanced.
 
 ### Dummy
 
