@@ -543,7 +543,7 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 { action }
 ```
 
-The Java code action is copied, as given, into the state-driven lexical analyzer produced by JLex.
+与えられた Java コードは JLex によって字句解析器にコピーされます。
 
 All curly braces contained in action not part of strings or comments should be balanced.
 
