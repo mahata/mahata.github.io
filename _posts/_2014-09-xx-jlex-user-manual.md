@@ -545,7 +545,31 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 
 与えられた Java コードは JLex によって字句解析器にコピーされます。
 
-All curly braces contained in action not part of strings or comments should be balanced.
+アクションの中にある波括弧で文字列でもコメントでもないものは、開き括弧と綴じ括弧の数が同じであるべきです。
+
+#### Actions and Recursion:
+
+If no return value is returned in an action, the lexical analyzer will loop, searching for the next match from the input stream and returning the value associated with that match.
+
+The lexical analyzer can be made to recur explicitly with a call to yylex(), as in the following code fragment.
+
+```
+{ ... 
+return yylex(); 
+... }
+```
+
+This code fragment causes the lexical analyzer to recur, searching for the next match in the input and returning the value associated with that match. The same effect can be had, however, by simply not returning from a given action. This results in the lexer searching for the next match, without the additional overhead of recursion.
+
+The preceding code fragment is an example of tail recursion, since the recursive call comes at the end of the calling function's execution. The following code fragment is an example of a recursive call that is not tail recursive.
+
+```
+{ ... 
+next = yylex(); 
+... }
+```
+
+Recursive actions that are not tail-recursive work in the expected way, except that variables such as yyline and yychar may be changed during recursion.
 
 ### Dummy
 
