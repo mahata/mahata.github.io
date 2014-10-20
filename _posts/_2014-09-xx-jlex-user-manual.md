@@ -547,11 +547,13 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 
 アクションの中にある波括弧で文字列でもコメントでもないものは、開き括弧と綴じ括弧の数が同じであるべきです。
 
-#### Actions and Recursion:
+#### アクションと再帰 (ToDo - Actions and Recursion:)
 
 If no return value is returned in an action, the lexical analyzer will loop, searching for the next match from the input stream and returning the value associated with that match.
 
-The lexical analyzer can be made to recur explicitly with a call to yylex(), as in the following code fragment.
+アクションに返り値がない場合、字句解析器はループし (ToDo)、次にマッチするものを入力ストリームから探して対応する値を返します。
+
+字句解析器は `yylex()` をコールすることで明示的に再帰できます。次のコード断片を参照してください。
 
 ```
 { ... 
