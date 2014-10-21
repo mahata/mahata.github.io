@@ -561,7 +561,7 @@ return yylex();
 ... }
 ```
 
-This code fragment causes the lexical analyzer to recur, searching for the next match in the input and returning the value associated with that match. The same effect can be had, however, by simply not returning from a given action. This results in the lexer searching for the next match, without the additional overhead of recursion.
+このコード断片は再帰的に字句解析し、次のマッチを探して対応する値を返します。同じことは単にアクションで値を返さないことでも実現できます。そうすることでオーバーヘッドなく次のマッチを探すことができます。
 
 The preceding code fragment is an example of tail recursion, since the recursive call comes at the end of the calling function's execution. The following code fragment is an example of a recursive call that is not tail recursive.
 
