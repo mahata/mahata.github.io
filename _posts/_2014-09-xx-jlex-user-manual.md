@@ -547,7 +547,7 @@ JLex のアルファベットは Ascii の文字セットです。すなわち�
 
 アクションの中にある波括弧で文字列でもコメントでもないものは、開き括弧と綴じ括弧の数が同じであるべきです。
 
-#### アクションと再帰 (ToDo - Actions and Recursion:)
+#### アクションと再帰
 
 If no return value is returned in an action, the lexical analyzer will loop, searching for the next match from the input stream and returning the value associated with that match.
 
@@ -563,7 +563,7 @@ return yylex();
 
 このコード断片は再帰的に字句解析し、次のマッチを探して対応する値を返します。同じことは単にアクションで値を返さないことでも実現できます。そうすることでオーバーヘッドなく次のマッチを探すことができます。
 
-The preceding code fragment is an example of tail recursion, since the recursive call comes at the end of the calling function's execution. The following code fragment is an example of a recursive call that is not tail recursive.
+前述のコード断片は末尾再帰の例です。なぜなら再帰呼び出しが処理の最後に来ているからです。次のコード断片は末尾再帰でない再帰呼び出しの例です。
 
 ```
 { ... 
@@ -571,7 +571,19 @@ next = yylex();
 ... }
 ```
 
-Recursive actions that are not tail-recursive work in the expected way, except that variables such as yyline and yychar may be changed during recursion.
+`yyline` や `yychar` が再帰処理の途中で変更される場合を除き、末尾再帰でない再帰呼び出しは好ましくありません。
+
+#### State Transitions:
+
+If lexical states are declared in the JLex directives section, transitions on these states can be declared within the regular expression actions. State transitions are made by the following function call.
+
+```
+yybegin(state);
+```
+
+The void function yybegin() is passed the state name state and effects a transition to this lexical state.
+
+The state state must be declared within the JLex directives section, or this call will result in a compiler error in the generated source file. The one exception to this declaration requirement is state YYINITIAL, the lexical state implicitly declared by JLex. The generated lexer begins lexical analysis in state YYINITIAL and remains in this state until a transition is made.
 
 ### Dummy
 
