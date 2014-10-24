@@ -573,7 +573,7 @@ next = yylex();
 
 `yyline` や `yychar` が再帰処理の途中で変更される場合を除き、末尾再帰でない再帰呼び出しは好ましくありません。
 
-#### State Transitions:
+#### 状態遷移
 
 If lexical states are declared in the JLex directives section, transitions on these states can be declared within the regular expression actions. State transitions are made by the following function call.
 
