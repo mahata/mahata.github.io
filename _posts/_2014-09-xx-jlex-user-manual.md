@@ -575,7 +575,7 @@ next = yylex();
 
 #### 状態遷移
 
-If lexical states are declared in the JLex directives section, transitions on these states can be declared within the regular expression actions. State transitions are made by the following function call.
+字句解析の状態は JLex ディレクティブのセクションで宣言され、状態遷移は正規表現のアクション部で宣言されます。状態遷移は次の関数呼び出しで行われます。
 
 ```
 yybegin(state);
