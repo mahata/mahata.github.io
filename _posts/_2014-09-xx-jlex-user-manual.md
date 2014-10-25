@@ -581,9 +581,9 @@ next = yylex();
 yybegin(state);
 ```
 
-The void function yybegin() is passed the state name state and effects a transition to this lexical state.
+`yybegin()` は状態名 `state` を受け取り、その値にもとづいて字句解析器の状態を遷移させる。
 
-The state state must be declared within the JLex directives section, or this call will result in a compiler error in the generated source file. The one exception to this declaration requirement is state YYINITIAL, the lexical state implicitly declared by JLex. The generated lexer begins lexical analysis in state YYINITIAL and remains in this state until a transition is made.
+The state `state` must be declared within the JLex directives section, or this call will result in a compiler error in the generated source file. The one exception to this declaration requirement is state YYINITIAL, the lexical state implicitly declared by JLex. The generated lexer begins lexical analysis in state YYINITIAL and remains in this state until a transition is made.
 
 ### Dummy
 
