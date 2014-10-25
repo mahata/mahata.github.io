@@ -583,7 +583,75 @@ yybegin(state);
 
 `yybegin()` は状態名 `state` を受け取り、その値にもとづいて字句解析器の状態を遷移させる。
 
-The state `state` must be declared within the JLex directives section, or this call will result in a compiler error in the generated source file. The one exception to this declaration requirement is state YYINITIAL, the lexical state implicitly declared by JLex. The generated lexer begins lexical analysis in state YYINITIAL and remains in this state until a transition is made.
+状態 `state` は JLex ディレクティブのセクションで宣言されなければなりません。宣言されない場合は生成後のファイルはコンパイルに失敗します。状態宣言における唯一の例外は `YYINITIAL` です。これは JLex では暗黙的に宣言されます。生成される字句解析器の初期状態 `YYINITIAL` で、最初の状態遷移が起こるまでその状態が続きます。
+
+#### 使用可能な字句解析器の値
+
+The following values, internal to the Yylex class, are available within the action portion of the lexical rules.
+
+| Variable or Method | ActivationDirective | Description |
+| java.lang.String yytext(); | Always active. | Matched portion of the character input stream. |
+| int yychar; | %char | Zero-based character index of the first character in the matched portion of the input stream |
+| int yyline; | %line | Zero-based line number of the start of the matched portion of the input stream |
+
+## Generated Lexical Analyzers
+
+JLex will take a properly-formed specification and transform it into a Java source file for the corresponding lexical analyzer.
+
+The generated lexical analayzer resides in the class Yylex. There are two constructors to this class, both requiring a single argument: the input stream to be tokenized. The input stream may either be of type java.io.InputStream or java.io.Reader (such as StringReader). Note that the java.io.Reader constructor should be used if you are generating a lexer accepting unicode characters, as the JDK 1.0 java.io.InputStream class does not always read unicode correctly.
+
+The access function to the lexer is Yylex.yylex(), which returns the next token from the input stream. The return type is Yytoken and the function is declared as follows.
+
+```
+class Yylex { ... 
+public Yytoken yylex () {
+... }
+```
+
+The user must declare the type of Yytoken and can accomplish this conveniently in the first section of the JLex specification, the user code section. For instance, to make Yylex.yylex() return a wrapper around integers, the user would enter the following code somewhere preceding the first ``%%''.
+
+```
+class Yytoken { int field; Yytoken(int f) { field=f; } }
+```
+
+Then, in the lexical actions, wrapped integers would be returned, in something like this way.
+
+```
+{ ...
+return new Yytoken(0); 
+... }
+```
+
+Likewise, in the user code section, a class could be defined declaring constants that correspond to each of the token types.
+
+```
+class TokenCodes { ... 
+public static final STRING = 0; 
+public static final INTEGER = 1; 
+... }
+```
+
+Then, in the lexical actions, these token codes could be returned.
+
+```
+{ ...
+return new Yytoken(STRING); 
+... }
+```
+
+These are simplified examples; in actual use, one would probably define a token class containing more information than an integer code.
+
+These examples begin to illustrate the object-oriented techniques a user could employ to define an arbitrarily complex token type to be returned by Yylex.yylex(). In particular, inheritance permits the user to return more than one token type. If a distinct token type was needed for strings and integers, the user could make the following declarations.
+
+```
+class Yytoken { ... } 
+class IntegerToken extends Yytoken { ... } 
+class StringToken extends Yytoken { ... }
+```
+
+Then the user could return both IntegerToken and StringToken types from the lexical actions.
+
+The names of the lexical analyzer class, the tokening function, and its return type each may be altered using the JLex directives. See the section 2.2.9 for more details.
 
 ### Dummy
 
