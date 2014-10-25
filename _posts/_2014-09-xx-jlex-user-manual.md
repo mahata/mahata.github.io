@@ -587,7 +587,7 @@ yybegin(state);
 
 #### 使用可能な字句解析器の値
 
-The following values, internal to the Yylex class, are available within the action portion of the lexical rules.
+次の値は `Yylex` クラスで定義されており、正規表現ルールのアクション部で使用可能です。
 
 | Variable or Method | ActivationDirective | Description |
 | java.lang.String yytext(); | Always active. | Matched portion of the character input stream. |
