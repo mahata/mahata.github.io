@@ -589,10 +589,10 @@ yybegin(state);
 
 次の値は `Yylex` クラスで定義されており、正規表現ルールのアクション部で使用可能です。
 
-| Variable or Method | ActivationDirective | Description |
-| java.lang.String yytext(); | Always active. | Matched portion of the character input stream. |
-| int yychar; | %char | Zero-based character index of the first character in the matched portion of the input stream |
-| int yyline; | %line | Zero-based line number of the start of the matched portion of the input stream |
+| 変数とメソッド | ActivationDirective | 説明 |
+| java.lang.String yytext(); | Always active. | 入力ストリームでマッチした箇所の文字列。 |
+| int yychar; | %char | 入力ストリームでマッチした箇所の最初の文字のインデックス |
+| int yyline; | %line | 入力ストリームでマッチした箇所の行番号 |
 
 ## Generated Lexical Analyzers
 
