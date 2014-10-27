@@ -594,9 +594,9 @@ yybegin(state);
 | int yychar; | %char | 入力ストリームでマッチした箇所の最初の文字のインデックス |
 | int yyline; | %line | 入力ストリームでマッチした箇所の行番号 |
 
-## Generated Lexical Analyzers
+## 字句解析器の生成
 
-JLex will take a properly-formed specification and transform it into a Java source file for the corresponding lexical analyzer.
+JLex は正しい書式の仕様を受け取り、それに対応する Java の字句解析器ファイルを生成します。
 
 The generated lexical analayzer resides in the class Yylex. There are two constructors to this class, both requiring a single argument: the input stream to be tokenized. The input stream may either be of type java.io.InputStream or java.io.Reader (such as StringReader). Note that the java.io.Reader constructor should be used if you are generating a lexer accepting unicode characters, as the JDK 1.0 java.io.InputStream class does not always read unicode correctly.
 
