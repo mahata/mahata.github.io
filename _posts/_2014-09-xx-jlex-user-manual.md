@@ -598,7 +598,7 @@ yybegin(state);
 
 JLex は正しい書式の仕様を受け取り、それに対応する Java の字句解析器ファイルを生成します。
 
-The generated lexical analayzer resides in the class Yylex. There are two constructors to this class, both requiring a single argument: the input stream to be tokenized. The input stream may either be of type java.io.InputStream or java.io.Reader (such as StringReader). Note that the java.io.Reader constructor should be used if you are generating a lexer accepting unicode characters, as the JDK 1.0 java.io.InputStream class does not always read unicode correctly.
+Yylex クラスに字句解析器は定義されます。このクラスには二つのコンストラクタがあり、どちらも一つの引数を必要とします: トークナイズされる入力ストリームです。入力ストリームは `java.io.InputStream` か `java.io.Reader` (`StringReader` など) です。`java.io.Reader` コンストラクタは、字句解析器でユニコード文字を扱いたいときに使うことに注意しましょう。JDK 1.0 では `java.io.InputStream` クラスはユニコード文字を正しく読み込めません。
 
 The access function to the lexer is Yylex.yylex(), which returns the next token from the input stream. The return type is Yytoken and the function is declared as follows.
 
