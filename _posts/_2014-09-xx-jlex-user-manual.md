@@ -608,13 +608,13 @@ public Yytoken yylex () {
 ... }
 ```
 
-The user must declare the type of Yytoken and can accomplish this conveniently in the first section of the JLex specification, the user code section. For instance, to make Yylex.yylex() return a wrapper around integers, the user would enter the following code somewhere preceding the first ``%%''.
+(ToDo) ユーザは `Yytoken` の型を JLex 仕様の最初のユーザーコードセクションで指定できます。例えば `Yylex.yylex()` に整数値のラッパーを返させる場合、最初の `%%` の前に次のコードを書きます。
 
 ```
 class Yytoken { int field; Yytoken(int f) { field=f; } }
 ```
 
-Then, in the lexical actions, wrapped integers would be returned, in something like this way.
+こうすると、正規表現アクションでは整数値のラッパーが返されます。次のようにです。
 
 ```
 { ...
