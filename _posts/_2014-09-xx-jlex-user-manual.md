@@ -639,9 +639,9 @@ return new Yytoken(STRING);
 ... }
 ```
 
-These are simplified examples; in actual use, one would probably define a token class containing more information than an integer code.
+これらは単純化された例です。現実的には単なる整数のコード値より多くの情報を持つトークンクラスを定義することになるでしょう。
 
-These examples begin to illustrate the object-oriented techniques a user could employ to define an arbitrarily complex token type to be returned by Yylex.yylex(). In particular, inheritance permits the user to return more than one token type. If a distinct token type was needed for strings and integers, the user could make the following declarations.
+(ToDo) これらの例は `Yylex.yylex()` が任意の複雑なトークン型を定義することを許すオブジェクト指向のテクニックをユーザーに提示します。特に継承により、ユーザにひとつ以上のトークン型を返す選択肢を与えます。異なるトークン型が整数や文字列に対して必要な場合、ユーザは次のような宣言をすることができます。
 
 ```
 class Yytoken { ... } 
