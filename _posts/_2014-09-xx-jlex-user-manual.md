@@ -600,7 +600,7 @@ JLex は正しい書式の仕様を受け取り、それに対応する Java の
 
 Yylex クラスに字句解析器は定義されます。このクラスには二つのコンストラクタがあり、どちらも一つの引数を必要とします: トークナイズされる入力ストリームです。入力ストリームは `java.io.InputStream` か `java.io.Reader` (`StringReader` など) です。`java.io.Reader` コンストラクタは、字句解析器でユニコード文字を扱いたいときに使うことに注意しましょう。JDK 1.0 では `java.io.InputStream` クラスはユニコード文字を正しく読み込めません。
 
-The access function to the lexer is Yylex.yylex(), which returns the next token from the input stream. The return type is Yytoken and the function is declared as follows.
+字句解析器にアクセスするための関数は `Yylex.yylex()` で、この関数は入力ストリームから次のトークンを返します。返り値の型は `Yytoken` となります。この関数は次のように定義されています。
 
 ```
 class Yylex { ... 
