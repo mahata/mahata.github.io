@@ -608,7 +608,7 @@ public Yytoken yylex () {
 ... }
 ```
 
-(ToDo) ユーザは `Yytoken` の型を JLex 仕様の最初のユーザーコードセクションで指定できます。例えば `Yylex.yylex()` に整数値のラッパーを返させる場合、最初の `%%` の前に次のコードを書きます。
+(ToDo) ユーザは `Yytoken` の型を JLex 仕様の最初のユーザーコードのセクションで指定できます。例えば `Yylex.yylex()` に整数値のラッパーを返させる場合、最初の `%%` の前に次のコードを書きます。
 
 ```
 class Yytoken { int field; Yytoken(int f) { field=f; } }
@@ -622,7 +622,7 @@ return new Yytoken(0);
 ... }
 ```
 
-Likewise, in the user code section, a class could be defined declaring constants that correspond to each of the token types.
+同様に、ユーザーコードのセクションで各々のトークンに対応する整数値を格納するクラスを定義できます。
 
 ```
 class TokenCodes { ... 
@@ -631,7 +631,7 @@ public static final INTEGER = 1;
 ... }
 ```
 
-Then, in the lexical actions, these token codes could be returned.
+字句解析アクションで、このトークンコードを返します。
 
 ```
 { ...
