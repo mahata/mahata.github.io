@@ -657,7 +657,7 @@ class StringToken extends Yytoken { ... }
 
 試験的にベンチマーク機能が導入されました。これは JLex が生成した字句解析器と手書きの字句解析器のパフォーマンスを比較するものです。比較は単純な `toy` プログラミング言語に対して行われます。手書きの字句解析器は JLex が生成する字句解析器と同様に Java で書かれています。
 
-The experiment consists of running each lexical analyzer on two source files written in the toy language, then measuring the time required to process these files. Each lexical analyzer was invoked by a dummy driver also written in Java.
+このベンチマークは字句解析の実行を `toy` プログラミング言語で書かれた2つのソースファイルに対して行い、それを処理するのに要した時間を計測することで行います。字句解析の起動は Java で書かれたダミーのドライバを通して行います。
 
 The generated lexical analyzer proved to be quite quick, as the following results show.
 
