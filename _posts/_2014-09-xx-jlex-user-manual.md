@@ -659,7 +659,7 @@ class StringToken extends Yytoken { ... }
 
 このベンチマークは字句解析の実行を `toy` プログラミング言語で書かれた2つのソースファイルに対して行い、それを処理するのに要した時間を計測することで行います。字句解析の起動は Java で書かれたダミーのドライバを通して行います。
 
-The generated lexical analyzer proved to be quite quick, as the following results show.
+生成される字句解析器は、次のベンチマークが示すようにとても速くなります。
 
 | Size of Source File | JLex-Generated Lexical Analyzer: Execution Time	| Hand-Written Lexical Analyzer: Execution Times |
 | 177 lines | 0.42 seconds | 0.53 seconds |
