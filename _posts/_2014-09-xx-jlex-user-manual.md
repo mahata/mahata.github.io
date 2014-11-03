@@ -661,9 +661,9 @@ class StringToken extends Yytoken { ... }
 
 生成される字句解析器は、次のベンチマークが示すようにとても速くなります。
 
-| Size of Source File | JLex-Generated Lexical Analyzer: Execution Time	| Hand-Written Lexical Analyzer: Execution Times |
-| 177 lines | 0.42 seconds | 0.53 seconds |
-| 897 lines | 0.98 seconds | 1.28 seconds |
+| ソースコードの大きさ | JLex が生成した字句解析器: 実行時間 | 手書きの字句解析器: 実行時間 |
+| 177 行 | 0.42 秒 | 0.53 秒 |
+| 897 行 | 0.98 秒 | 1.28 秒 |
 
 The JLex lexical analyzer soundly outperformed the hand-written lexer.
 
