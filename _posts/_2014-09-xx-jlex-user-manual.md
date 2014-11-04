@@ -673,10 +673,10 @@ JLex のような機械的に生成される字句解析器に対する批判の
 
 ### 未実装の機能
 
-The following is a (possibly incomplete) list of unimplemented features of JLex.
+次のリストは (おそらく不完全な) JLex の未実装機能です。
 
-1. The regular expression lookahead operator is unimplemented, and not included in the list of special regular expression metacharacters.
-2. The start-of-line operator (^) assumes the following nonstandard behavior. A match on a regular expression that uses this operator will cause the newline that precedes the match to be discarded.
+1. (ToDo) 正規表現の先読みオペレータが未実装で、正規表現のメタ文字リストに含まれていません。
+2. 行頭オペレータ (^) が次の標準的でない振る舞いをします。このオペレータを使う正規表現はマッチするより前の改行文字を破棄します。
 
 ### ユニコード対アスキー
 
