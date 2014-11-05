@@ -680,9 +680,9 @@ JLex のような機械的に生成される字句解析器に対する批判の
 
 ### ユニコード対アスキー
 
-In contrast to the 8-bit character type (char) mandated by Ansi C, Java supports a 16-bit char and the Unicode character set. Java provides a built-in String class to manipulate these Unicode characters.
+Ansi C の `char` 型における8ビットの文字とは異なり、Java では16ビットの `char` 型とユニコード文字セットを扱えます。Java 組み込みの `String` クラスはこの湯にコード文字を操作できます。
 
-As of version 1.2.5, JLex uses the JDK 1.1 Reader and Writer classes to read in the JLex specification file and write out the lexical analyzer source file. This means that all unicode characters are allowed in both of these. In order for the generated scanner to work with unicode characters, you must use the java.io.Reader constructor of the generated scanner, and the Reader you provide must properly handle the translation from OS-native format to unicode. You must also specify the %unicode directive in the specification; see section 2.2.14.
+バージョン 1.2.5 までの JLex は JDK 1.1 の `Reader` と `Writer` クラスをそれぞれ JLex 仕様ファイルの読み込みと字句解析ソースファイルの出力に使用しています。つまり全てのユニコード文字がこれらのファイルで使用できるということです。生成された字句解析器がユニコード文字を扱うには、生成された字句解析器の `java.io.Reader` コンストラクタを使います。こうすることで `Reader` はOSネイティブのフォーマットからユニコードへの変換を行います。また `%unicode` ディレクティブを仕様で指定する必要があります。詳しくは[セクション2.2.14](https://www.cs.princeton.edu/~appel/modern/java/JLex/current/manual.html#SECTION2.2.14)を参照してください。
 
 ### 状態リストの中のコンマ
 
