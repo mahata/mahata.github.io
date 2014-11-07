@@ -686,7 +686,7 @@ Ansi C の `char` 型における8ビットの文字とは異なり、Java で�
 
 ### 状態リストの中のコンマ
 
-Commas between state names in declaration lists and lexical rules are optional. These lists will be correctly parsed with white space between state names and without comma separators.
+(ToDo) 状態名リストや正規表現ルール宣言の中にあるコンマはオプションです。これらのリストはコンマをセパレータとせずとも状態名の区切りに空白を使うことでも正しくパースできます。
 
 ### 未実装の機能に対するウィッシュリスト
 
