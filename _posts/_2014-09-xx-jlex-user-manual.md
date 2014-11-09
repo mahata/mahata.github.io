@@ -690,12 +690,12 @@ Ansi C の `char` 型における8ビットの文字とは異なり、Java で�
 
 ### 未実装の機能に対するウィッシュリスト
 
-The following minor features would be nice to have as part of JLex, but have not been implemented due to their scope or their negative impact upon performance.
+次の項目は JLex にあるべき機能ですが、パフォーマンスに与える影響などの問題により未実装なものです。
 
-1. Detection of unbalanced braces within the comment portion of lexical actions.
-2. Detection of cycles in macro definitions.
+1. 字句解析アクションのコメント部分における波括弧がマッチしていない状態の検知
+2. マクロ定義の循環定義の検知
 
-## Credits and Copyrights (ToDo - Don't translate)
+## Credits and Copyrights
 
 ### Credits
 
