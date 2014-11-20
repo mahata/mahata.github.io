@@ -190,11 +190,11 @@ JLex ファイルで状態の宣言をせず、状態リストをともなうル
 %line
 ```
 
-行カウントは 0 からはじまり、`yyline` という整数型の変数に格納されます。
+行カウントは 0 からはじまり、マッチした箇所の最初の行インデックスが `yyline` という整数型の変数に格納されます。
 
 #### Java CUP 互換性
 
-Java CUP はジョージア工科大学の Scott Hudson に作られた Java の構文解析器生成系です。現在は Frank Flannery, Dan Wang, C. Scott Ananian にメンテナンスされています。詳しくはこちらのサイトを参照してください - http://www.cs.princeton.edu/~appel/modern/java/CUP/
+Java CUP はジョージア工科大学の Scott Hudson に作られた Java の構文解析器生成系です。現在は Frank Flannery, Dan Wang, C. Scott Ananian にメンテナンスや機能拡張されています。詳しくはこちらのサイトを参照してください - [http://www.cs.princeton.edu/~appel/modern/java/CUP/](http://www.cs.princeton.edu/~appel/modern/java/CUP/)
 
 Java CUP 互換機能はデフォルトではオフですが、次の JLex ディレクティブでオンにできます。
 
@@ -202,7 +202,7 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 %cup
 ```
 
-このディレクティブを使うと字句解析器は `java_cup.runtime.Scanner` インタフェースを実装します。これは次の3つのディレクティブと等価です:
+このディレクティブを使うと字句解析器は `java_cup.runtime.Scanner` インタフェースを実装します。これは次の3つのディレクティブと等価です。
 
 ```
 %implements java_cup.runtime.Scanner
@@ -210,7 +210,7 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 %type java_cup.runtime.Symbol
 ```
 
-この3つのディレクティブについては次のセクションを参照してください。また、CUP のマニュアルにも CUP と JLex を同時に使う方法についての記述があります。
+この3つのディレクティブについては[次のセクション](https://www.cs.princeton.edu/~appel/modern/java/JLex/current/manual.html#SECTION2.2.9)を参照してください。また、CUP のマニュアルにも CUP と JLex を同時に使う方法についての記述があります。
 
 #### 字句解析器のコンポーネント名
 
