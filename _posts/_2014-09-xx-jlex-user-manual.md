@@ -238,7 +238,7 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 
 #### デフォルトのトークン型
 
-32ビットのプリミティブな整数型をトークナイズ関数の返り値にする (すなわち、トークンクラスを整数型にする) ためには 、`%integer` ディレクティブを使います。
+32ビットのプリミティブな整数型 `int` をトークナイズ関数の返り値にする (すなわち、トークンクラスを整数型にする) ためには `%integer` ディレクティブを使います。
 
 ```
 %integer
@@ -248,7 +248,7 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 
 ```
 class Yylex { ... 
-public Yytoken yylex () {
+    public Yytoken yylex () {
 ... }
 ```
 
@@ -256,7 +256,7 @@ public Yytoken yylex () {
 
 ```
 class Yylex { ... 
-public int yylex () {
+    public int yylex () {
 ... }
 ```
 
@@ -270,7 +270,7 @@ return 7;
 
 整数の戻り値は end-of-file に対する挙動の変更をともないます。デフォルトでは、オブジェクト (`java.lang.Object` クラスのサブクラス) が `Yylex.yylex()` で返されます。`Yylex` が字句解析をするときは特別なオブジェクトが end-of-file のために予約されなければなりません。入力ファイルが end-of-file に到達すると `Yylex.yylex()` は `null` を返します。
 
-`Yylex.yylex()` の返り値が整数型なら `null` が返ることはありません。代わりに `Yylex.yylex()` は `-1` を返します。この値は`Yylex.YYEOF` と等価です。`%integer` ディレクティブは `%yyeof` を含みます。詳しくは次を参照してください。
+`Yylex.yylex()` の返り値が整数型 `int` なら `null` を返すことができません。代わりに `Yylex.yylex()` は `-1` を返します。この値は`Yylex.YYEOF` と等価です。`%integer` ディレクティブは `%yyeof` を含みます。詳しくは次を参照してください。
 
 #### デフォルトのトークン型 II: ラップクラスの整数
 
