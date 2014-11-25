@@ -47,16 +47,16 @@ JLex ディレクティブのセクションは最初の `%%` の後から二番
 `%{...%}` ディレクティブに書かれた Java コードは字句解析器クラスにコピーされます。次のようにして使います。
 
 ```
-%{ 
-<code> 
+%{
+<code>
 %}
 ```
 
 `%{` と `%}` はどちらも行の先頭に置かなければなりません。`<code>` が JLex の生成する字句解析器クラスにコピーされます。
 
 ```
-class Yylex { 
-... <code> ... 
+class Yylex {
+... <code> ...
 }
 ```
 
@@ -67,7 +67,7 @@ class Yylex {
 `%init{ ... %init}` ディレクティブに書かれた Java コードは字句解析器クラスのコンストラクタにコピーされます。
 
 ```
-%init{ 
+%init{
 <code>
 %init}
 ```
@@ -75,10 +75,10 @@ class Yylex {
 `%init{` と `%init}` は行頭に書きます。`<code>` が字句解析器クラスのコンストラクタにコピーされます。
 
 ```
-class Yylex { 
-Yylex () { 
-... <code> ... 
-} 
+class Yylex {
+Yylex () {
+... <code> ...
+}
 }
 ```
 
@@ -87,7 +87,7 @@ Yylex () {
 `%init{ ... %init}` に書かれたコードは例外を投げる可能性があります。この例外を宣言するには `%initthrow{ ... $initthrow}` ディレクティブを使います。
 
 ```
-%initthrow{ 
+%initthrow{
 <exception[1]>[, <exception[2]>, ...]
 %initthrow}
 ```
@@ -95,10 +95,10 @@ Yylex () {
 ここに書かれた Java コードは字句解析器のコンストラクタにコピーされます。
 
 ```
-Yylex () 
+Yylex ()
 throws <exception[1]>[, <exception[2]>, ...]
-{ 
-... <code> ... 
+{
+... <code> ...
 }
 ```
 
@@ -109,7 +109,7 @@ throws <exception[1]>[, <exception[2]>, ...]
 `%eof{ ... %eof}` ディレクティブに書いた Java コードは、字句解析クラスが end-of-file にたどり着いたときの処理に使われます。
 
 ```
-%eof{ 
+%eof{
 <code>
 %eof}
 ```
@@ -119,7 +119,7 @@ throws <exception[1]>[, <exception[2]>, ...]
 `%eof{ ... %eof}` に書かれたコードは例外を投げる可能性があります。この例外を宣言するには `%eofthrow{ ... $eofthrow}` ディレクティブを使います。
 
 ```
-%eofthrow{ 
+%eofthrow{
 <exception[1]>[, <exception[2]>, ...]
 %eofthrow}
 ```
@@ -127,10 +127,10 @@ throws <exception[1]>[, <exception[2]>, ...]
 ここに書かれた Java コードは字句解析関数にコピーされ、end-of-file に到達したときの後始末のための処理をします。
 
 ```
-private void yy_do_eof () 
+private void yy_do_eof ()
 throws <exception[1]>[, <exception[2]>, ...]
-{ 
-... <code> ... 
+{
+... <code> ...
 }
 ```
 
@@ -247,7 +247,7 @@ Java CUP 互換機能はデフォルトではオフですが、次の JLex デ�
 次のコード断片が示す通り、デフォルトでは `Ytoken` がトークナイズ関数 `Yylex.yylex()` の戻り値の型です。
 
 ```
-class Yylex { ... 
+class Yylex { ...
     public Yytoken yylex () {
 ... }
 ```
@@ -255,7 +255,7 @@ class Yylex { ...
 `%integer` ディレクティブで関数の宣言部を変えられます。トークンタイプが `int` になります。
 
 ```
-class Yylex { ... 
+class Yylex { ...
     public int yylex () {
 ... }
 ```
@@ -264,7 +264,7 @@ class Yylex { ...
 
 ```
 { ...
-return 7; 
+return 7;
 ... }
 ```
 
@@ -283,7 +283,7 @@ return 7;
 次のコード断片の通り、デフォルトでは `Yytoken` がトークナイズ関数 `Yylex.yylex()` の返り値の型です。
 
 ```
-class Yylex { ... 
+class Yylex { ...
 public Yytoken yylex () {
 ... }
 ```
@@ -291,7 +291,7 @@ public Yytoken yylex () {
 `%intwrap` ディレクティブでこの関数の宣言を変えられます。次のように `java.lang.Integer` が返り値の型になります。
 
 ```
-class Yylex { ... 
+class Yylex { ...
 public java.lang.Integer yylex () {
 ... }
 ```
@@ -300,7 +300,7 @@ public java.lang.Integer yylex () {
 
 ```
 { ...
-return new java.lang.Integer(0); 
+return new java.lang.Integer(0);
 ... }
 ```
 
@@ -376,7 +376,7 @@ UNIX では改行文字は `\n` で表現します。DOS では、改行文字�
 JLex 正規表現のアクション部に書かれたコードは例外を投げる可能性があります。この例外を宣言するには `%yylexthrow{ ... %yylexthrow}` ディレクティブを使います。
 
 ```
-%yylexthrow{ 
+%yylexthrow{
 <exception[1]>[, <exception[2]>, ...]
 %yylexthrow}
 ```
@@ -384,10 +384,10 @@ JLex 正規表現のアクション部に書かれたコードは例外を投げ
 ここに書かれた Java コードはトークナイズ関数 `Yylex.yylex()` の宣言部にコピーされます。次の例を参照してください。
 
 ```
-public Yytoken yylex () 
-throws <exception[1]>[, <exception[2]>, ...] 
-{ 
-... 
+public Yytoken yylex ()
+throws <exception[1]>[, <exception[2]>, ...]
+{
+...
 }
 ```
 
@@ -398,7 +398,7 @@ throws <exception[1]>[, <exception[2]>, ...]
 `%eofval{ ... %eofval}` ディレクティブで end-of-file に対する返り値を指定できます。このディレクティブの中に Java コードを書くと字句解析器のトークナイズ関数 `Yylex.yylex()` にコピーされ、字句解析器が end-of-file を処理するときに実行されます。このコードの返り値の型は `Yylex.yylex()` の返り値の型と同じである必要があります。
 
 ```
-%eofval{ 
+%eofval{
 <code>
 %eofval}
 ```
@@ -408,16 +408,16 @@ throws <exception[1]>[, <exception[2]>, ...]
 使用例は次の通りです。end-of-file に対する返り値はデフォルトの `null` ではなく `(new token(sym.EOF))` と仮定します。その場合は次のような宣言を行います。
 
 ```
-%eofval{ 
-return (new token(sym.EOF)); 
+%eofval{
+return (new token(sym.EOF));
 %eofval}
 ```
 
 このコードは `Yylex.yylex()` の適切な場所にコピーされます。
 
 ```
-public Yytoken yylex () { ... 
-return (new token(sym.EOF)); 
+public Yytoken yylex () { ...
+return (new token(sym.EOF));
 ... }
 ```
 
@@ -425,21 +425,19 @@ return (new token(sym.EOF));
 
 #### 実装するインタフェースの指定
 
-JLex allows the user to specify an interface which the Yylex class will implement. By adding the following declaration to the input file:
-
 JLex では次の宣言を入力ファイルに入れることで、 `Yylex` クラスが実装するインタフェースを指定できます。
 
 ```
 %implements <classname>
 ```
 
-生成されるパーサークラス定義は次のようになります。
+これは yylex が `classname` を実装することを宣言します。生成されるパーサークラス定義は次のようになります。
 
 ```
 class Yylex implements classname { ...
 ```
 
-#### Making the Generated Class Public
+#### 生成されるクラスを public に変更
 
 `%public` ディレクティブで JLex が生成する字句解析クラスを public にできます。
 
@@ -447,7 +445,7 @@ class Yylex implements classname { ...
 %public
 ```
 
-デフォルトでは生成されるクラスにはアクセスが与えられないので、現在のパッケージからのみ参照可能になります。
+デフォルトでは生成されるクラスにはアクセス修飾子が付与されないので、現在のパッケージからのみ参照可能になります。
 
 
 ## 正規表現ルール
@@ -555,8 +553,8 @@ If no return value is returned in an action, the lexical analyzer will loop, sea
 字句解析器は `yylex()` をコールすることで明示的に再帰できます。次のコード断片を参照してください。
 
 ```
-{ ... 
-return yylex(); 
+{ ...
+return yylex();
 ... }
 ```
 
@@ -565,8 +563,8 @@ return yylex();
 前述のコード断片は末尾再帰の例です。なぜなら再帰呼び出しが処理の最後に来ているからです。次のコード断片は末尾再帰でない再帰呼び出しの例です。
 
 ```
-{ ... 
-next = yylex(); 
+{ ...
+next = yylex();
 ... }
 ```
 
@@ -602,7 +600,7 @@ Yylex クラスに字句解析器は定義されます。このクラスには�
 字句解析器にアクセスするための関数は `Yylex.yylex()` で、この関数は入力ストリームから次のトークンを返します。返り値の型は `Yytoken` となります。この関数は次のように定義されています。
 
 ```
-class Yylex { ... 
+class Yylex { ...
 public Yytoken yylex () {
 ... }
 ```
@@ -617,16 +615,16 @@ class Yytoken { int field; Yytoken(int f) { field=f; } }
 
 ```
 { ...
-return new Yytoken(0); 
+return new Yytoken(0);
 ... }
 ```
 
 同様に、ユーザーコードのセクションで各々のトークンに対応する整数値を格納するクラスを定義できます。
 
 ```
-class TokenCodes { ... 
-public static final STRING = 0; 
-public static final INTEGER = 1; 
+class TokenCodes { ...
+public static final STRING = 0;
+public static final INTEGER = 1;
 ... }
 ```
 
@@ -634,7 +632,7 @@ public static final INTEGER = 1;
 
 ```
 { ...
-return new Yytoken(STRING); 
+return new Yytoken(STRING);
 ... }
 ```
 
@@ -643,8 +641,8 @@ return new Yytoken(STRING);
 (ToDo) これらの例は `Yylex.yylex()` が任意の複雑なトークン型を定義することを許すオブジェクト指向のテクニックをユーザーに提示します。特に継承により、ユーザにひとつ以上のトークン型を返す選択肢を与えます。異なるトークン型が整数や文字列に対して必要な場合、ユーザは次のような宣言をすることができます。
 
 ```
-class Yytoken { ... } 
-class IntegerToken extends Yytoken { ... } 
+class Yytoken { ... }
+class IntegerToken extends Yytoken { ... }
 class StringToken extends Yytoken { ... }
 ```
 
@@ -713,4 +711,3 @@ Copyright 1996 by Elliot Joel Berk.
 Permission to use, copy, modify, and distribute this software and its documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appear in all copies and that both the copyright notice and this permission notice and warranty disclaimer appear in supporting documentation, and that the name of Elliot Joel Berk not be used in advertising or publicity pertaining to distribution of the software without specific, written prior permission.
 
 Elliot Joel Berk disclaims all warranties with regard to this software, including all implied warranties of merchantability and fitness. In no event shall Elliot Joel Berk be liable for any special, indirect or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action of contract, negligence or other tortious action, arising out of or in connection with the use or performance of this software.
-
