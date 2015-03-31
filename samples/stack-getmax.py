@@ -8,7 +8,7 @@ class MyStack(object):
 
     def get_max(self):
         """
-        It should be O(1)
+        It needs to be O(1)
         """
         return self.stack_b[-1]
 
