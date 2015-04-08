@@ -46,7 +46,7 @@ Like this way, the top of *Stack B* is always the biggest value of *Stack A*.
 
 ### How to pop()?
 
-`pop()` is relatively easy. `pop()` always retrieves the top of *Stack A*. If and only if the value retrieved from *Stack A* is the same as the top of *Stack B*, the top of *Stack B* is also popped.
+`pop()` is relatively easy. `pop()` always retrieves the top of *Stack A*. If and only if the value retrieved from *Stack A* is the same as the top of *Stack B*, the top of *Stack B* is discarded.
 
 ## Sample Code in Python
 
