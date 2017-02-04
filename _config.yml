@@ -5,8 +5,9 @@ email: mahata777@gmail.com
 description: "Memoranda of computer topics."
 baseurl: ""
 url: "https://mahata.github.io"
-twitter_username: mahata
 github_username:  mahata
+gems:
+  - jekyll-sitemap
 
 # Build settings
 markdown: kramdown
