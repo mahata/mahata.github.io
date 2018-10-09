@@ -18,7 +18,7 @@ import base64
 with open('credential.json') as f:
     json_data = json.load(f)
 str_json = json.dumps(json_data)
-b64data = base64.b64encode(str_json.encode('utf-8'))
+b64data = base64.b64encode(str_json.encode('utf-8')).decode('utf-8')
 
 print(b64data)
 ```
