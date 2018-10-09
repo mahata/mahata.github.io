@@ -4,9 +4,7 @@ title: Re-visiting Bridge Pattern
 category: Java
 ---
 
-Now that I need to write some Java code at my work place, I've started re-learning Java's typical design patterns. 
-
-I'm going to summarize what the "Bridge Pattern" is in this article.
+Now that I need to write some Java code at my work place, I've started re-learning Java's typical design patterns. I'm going to summarize what the "Bridge Pattern" is in this article.
 
 Let's imagine that a class is inherited by 2 classes to implement an abstract method in the super class. More concretely, we can draw a diagram for that as follows:
 
@@ -16,7 +14,7 @@ Let's assume that we want to implement a new feature for `methodA()` and revise 
 
 ![Second Diagram](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKfCAYufIamkKKZEIImkLb1o1b6EIWg9nGeGfa8rLpLCKMrkQab6VegZXgOrLoqNThrE2BrEUFH2jGIN9a6iCGHhGt21Ml5hC4BLO4H8WnF41WINe0OZL0sODa03oAP6LnV9vTY5ZL2LGupaWb0G8OJBi0iRSJcavgK0umm0)
 
-We already have a concrete method "methodA()" in `SubClassA1` and `SubClassA2` for `ClassA`, so we need the counterparts of them for `ClassB` as well (They're expressed as `SubClassB1` and `SubClassB2` in the diagram above).
+We already have a concrete method `methodA()` in `SubClassA1` and `SubClassA2` for `ClassA`, so we need the counterparts of them for `ClassB` as well (They're expressed as `SubClassB1` and `SubClassB2` in the diagram above).
 
 The whole architecture gets complicated unnecessarily. That's why we want to introduce "Bridge Pattern" to make it simple.
 
