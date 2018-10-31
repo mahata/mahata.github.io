@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Factory Methods vs. Constructors
-category: Java
+categories: [Java]
+tags: [Java, Effective Java]
 ---
 
 (This post is an excerpt of "Effective Java, 3rd Edition")

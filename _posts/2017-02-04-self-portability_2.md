@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Self Portability II - Make yourself free from switching software
-category: Essay
+categories: [Essay]
 ---
 
 I've made a post titled ["Self Portability"](/essay/2017/01/28/self-portability/) previously. In that, I wrote as follows:

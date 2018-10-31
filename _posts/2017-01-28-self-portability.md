@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Self Portability
-category: Essay
+categories: [Essay]
 ---
 
 I've started thinking about self-portability seriously. Software engineers, including me, should be able to work anywhere in the world. In other words, we should be mobile.
