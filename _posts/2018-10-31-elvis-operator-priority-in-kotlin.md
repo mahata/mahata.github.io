@@ -6,7 +6,7 @@ categories: [Kotlin]
 
 I'm taking a course named [Kotlin for Java Developer](https://www.coursera.org/learn/kotlin-for-java-developers/) from Coursera. I'm in the middle fo week 3, and I'd say it's a fantastic course to take if you're new to Kotlin.
 
-Yes, I'm one of the new comers of Kotlin. As a newbie, I got puzzled by an example given the course as follows:
+Yes, I'm one of the new comers of Kotlin. As a newbie, I got puzzled by an example given in the course as follows:
 
 ```Kotlin
 val x: Int? = 1
