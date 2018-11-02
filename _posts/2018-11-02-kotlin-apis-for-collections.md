@@ -6,7 +6,7 @@ categories: [Kotlin]
 
 Here's a list of snippets that may be a good reference for Kotlin newbies like me ;-) Basically, they're coming from a lecture from [Kotlin for Java Developer](https://www.coursera.org/learn/kotlin-for-java-developers/) from Coursera.
 
-```kotlin
+```
 enum class Gender { MALE, FEMALE }
 
 data class Hero(
