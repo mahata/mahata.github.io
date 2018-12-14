@@ -6,7 +6,7 @@ description: "Memoranda of computer topics."
 baseurl: ""
 url: "https://mahata.github.io"
 github_username:  mahata
-gems:
+plugins:
   - jekyll-sitemap
 
 # Build settings
