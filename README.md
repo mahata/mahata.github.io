@@ -5,7 +5,7 @@ Here's a repo for [mahata.github.io](https://mahata.github.io).
 ## Commands
 
 ```
-$ jekyll serve --watch  # Run jekyll locally
+$ jekyll serve --watch --drafts # Run jekyll locally
 ```
 
 ## License
