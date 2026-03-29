@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title="Relentlessly prune bullshit!" description="Memoranda of computer topics.">
+  <h1>Posts</h1>
+  
+  <ul class="posts">
+    {sortedPosts.map((post) => (
+      <li>
+        <span class="post-date">
+          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+        </span>
+        <a href={`/blog/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="/rss.xml">via RSS</a></p>
+</Base>
+
+<style>
+  .posts {
+    list-style: none;
+    padding: 0;
+  }
+
+  .posts li {
+    display: flex;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-date {
+    min-width: 120px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .posts a {
+    text-decoration: none;
+  }
+
+  .posts a:hover {
+    text-decoration: underline;
+  }
+
+  .rss-subscribe {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+</style>
