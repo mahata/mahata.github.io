@@ -8,6 +8,8 @@ Blog powered by [Astro](https://astro.build).
 npm run dev      # Start dev server
 npm run build    # Build for production
 npm run preview  # Preview production build
+npm test         # Run unit tests
+npm run check    # Run type checking
 ```
 
 ## Writing Posts
@@ -24,6 +26,12 @@ Your content here...
 ```
 
 Add `draft: true` to hide from listing.
+
+## Testing
+
+Unit tests live in `src/utils/posts.test.ts` and cover the shared utility functions used for slug generation, post filtering, sorting, and date formatting. Tests are run with [Vitest](https://vitest.dev/).
+
+CI (`.github/workflows/deploy.yml`) runs tests and type checking before every deploy.
 
 ## License
 

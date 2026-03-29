@@ -1,17 +1,14 @@
 ---
 import Base from './Base.astro';
 import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../utils/posts';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
-const formattedDate = post.data.date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-});
+const formattedDate = formatDate(post.data.date);
 ---
 
 <Base title={post.data.title} description={post.data.description}>

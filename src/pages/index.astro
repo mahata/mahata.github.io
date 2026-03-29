@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { sortPostsByDate, formatDate, getSlugFromId } from '../utils/posts';
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
-const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = sortPostsByDate(posts);
 ---
 
 <Base title="Relentlessly prune bullshit!" description="Memoranda of computer topics.">
@@ -13,9 +14,9 @@ const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
     {sortedPosts.map((post) => (
       <li>
         <span class="post-date">
-          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+          {formatDate(post.data.date)}
         </span>
-        <a href={`/blog/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
+        <a href={`/blog/${getSlugFromId(post.id)}/`}>{post.data.title}</a>
       </li>
     ))}
   </ul>

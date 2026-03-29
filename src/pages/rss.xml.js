@@ -1,11 +1,10 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { filterPublishedPosts, sortPostsByDate, getSlugFromId } from '../utils/posts';
 
 export async function GET(context) {
   const posts = await getCollection('blog');
-  const sortedPosts = posts
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const sortedPosts = sortPostsByDate(filterPublishedPosts(posts));
 
   return rss({
     title: 'Relentlessly prune bullshit!',
@@ -15,7 +14,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
-      link: `/blog/${post.id.replace(/\.md$/, '')}/`,
+      link: `/blog/${getSlugFromId(post.id)}/`,
     })),
   });
 }
