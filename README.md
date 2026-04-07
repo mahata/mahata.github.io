@@ -14,7 +14,16 @@ npm run check    # Run type checking
 
 ## Writing Posts
 
-Create new posts in `src/content/blog/`:
+Scaffold a new post with:
+
+```bash
+npm run new-post -- "My Post Title"
+npm run new-post -- "My Draft Post" --draft
+```
+
+This creates a file like `src/content/blog/2024-01-15-my-post-title.md` with the frontmatter pre-filled.
+
+You can also create posts manually in `src/content/blog/`:
 
 ```markdown
 ---
