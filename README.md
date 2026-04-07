@@ -5,11 +5,11 @@ Blog powered by [Astro](https://astro.build).
 ## Commands
 
 ```bash
-npm run dev      # Start dev server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm test         # Run unit tests
-npm run check    # Run type checking
+pnpm run dev      # Start dev server
+pnpm run build    # Build for production
+pnpm run preview  # Preview production build
+pnpm test         # Run unit tests
+pnpm run check    # Run type checking
 ```
 
 ## Writing Posts
@@ -17,8 +17,8 @@ npm run check    # Run type checking
 Scaffold a new post with:
 
 ```bash
-npm run new-post -- "My Post Title"
-npm run new-post -- "My Draft Post" --draft
+pnpm run new-post -- "My Post Title"
+pnpm run new-post -- "My Draft Post" --draft
 ```
 
 This creates a file like `src/content/blog/2024-01-15-my-post-title.md` with the frontmatter pre-filled.
